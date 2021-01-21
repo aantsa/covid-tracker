@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="table-div">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headers" scope="col">{{head}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of countryData let i = index">
+            <th scope="row">{{ data.country }}</th>
+            <td>{{data.capital_city}}</td>
+            <td>{{data.population}}</td>
+            <td>{{data.sq_km_area}}</td>
+            <td>{{data.life_expectancy}}</td>
+            <td>{{data.elevation_in_meters}}</td>
+            <td>{{data.continent}}</td>
+            <td>{{data.abbreviation}}</td>
+            <td>{{data.location}}</td>
+            <td>{{data.iso}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

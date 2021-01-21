@@ -1,12 +1,12 @@
 export interface Country {
-    confirmed: number,
-    recovered: number,
-    deaths: number,
-    countryName: string,
+    country: string,
     population: number,
-    sqKmArea: number,
-    lifeExpectancy: string,
+    sq_km_area: number,
+    life_expectancy: number,
+    elevation_in_meters: number,
     continent: string,
+    abbreviation: string,
     location: string,
-    capital: string
+    iso: number,
+    capital_city: string
 }

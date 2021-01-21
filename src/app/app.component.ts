@@ -1,5 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Country } from './models/country';
+import { ConnectionService } from './services/connection.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +10,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  title = 'covid-tracker';
-
-
+  title = "Angular 10";
 }
