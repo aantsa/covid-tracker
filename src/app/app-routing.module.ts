@@ -4,6 +4,7 @@ import { CountryDataComponent } from './country-data/country-data.component';
 import { GeoMapComponent } from './geo-map/geo-map.component';
 
 const routes: Routes = [
+  {path: 'country-data/:country', component: CountryDataComponent},
   {path: 'country-data', component: CountryDataComponent},
   {path: 'geo-map', component: GeoMapComponent}
 ];

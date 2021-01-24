@@ -7,6 +7,7 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { Router } from '@angular/router';
+import { ConnectionService } from '../services/connection.service';
 
 /* Chart code */
 // Themes begin
@@ -19,6 +20,7 @@ am4core.useTheme(am4themes_animated);
 })
 export class GeoMapComponent implements OnInit {
   r : any;
+  country: any;
   constructor(private router: Router ) {}
 
   ngOnInit(): void {
@@ -65,7 +67,7 @@ export class GeoMapComponent implements OnInit {
     // Create an event to toggle "active" state
     polygonTemplate.events.on("hit", function (ev) {
       ev.target.isActive = !ev.target.isActive;
-      this.router.navigate(['/country-data']);
+      this.router.navigate(['/country-data', ev.target.dataItem.dataContext.name]);
     }, this)
     
   }

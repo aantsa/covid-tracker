@@ -7,17 +7,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of countryData let i = index">
-            <th scope="row">{{ data.country }}</th>
-            <td>{{data.capital_city}}</td>
-            <td>{{data.population}}</td>
-            <td>{{data.sq_km_area}}</td>
-            <td>{{data.life_expectancy}}</td>
-            <td>{{data.elevation_in_meters}}</td>
-            <td>{{data.continent}}</td>
-            <td>{{data.abbreviation}}</td>
-            <td>{{data.location}}</td>
-            <td>{{data.iso}}</td>
+          <tr>
+            <th scope="row">{{ countryData.country }}</th>
+            <td>{{countryData.capital_city}}</td>
+            <td>{{countryData.population}}</td>
+            <td>{{countryData.sq_km_area}}</td>
+            <td>{{countryData.life_expectancy}}</td>
+            <td>{{countryData.elevation_in_meters}}</td>
+            <td>{{countryData.continent}}</td>
+            <td>{{countryData.abbreviation}}</td>
+            <td>{{countryData.location}}</td>
+            <td>{{countryData.iso}}</td>
           </tr>
         </tbody>
       </table>

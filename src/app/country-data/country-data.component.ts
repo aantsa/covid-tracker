@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Country } from '../models/country';
 import { ConnectionService } from '../services/connection.service';
@@ -10,7 +11,8 @@ import { ConnectionService } from '../services/connection.service';
 })
 export class CountryDataComponent implements OnInit {
   countryData$: Observable<Country>;
-  countryData: any;
+  countryData: any = [];
+  myParam;
   array: Country[] = [];
   title = 'covid-tracker';
   headers = [  "Country",
@@ -25,28 +27,17 @@ export class CountryDataComponent implements OnInit {
   "Iso"
   ]
 
-  constructor(private connectionService: ConnectionService){
-    /*if(!this.connectionService.countryData){
-      this.connectionService.loadCountryCache()
-      this.connectionService.countryData$.subscribe(
-        data => {
-          this.countryData = data;
-          console.log(data)
-        },
-        
-      error => alert('An error has occured please refresh the page.'));
-    } else {
-      this.countryData = this.connectionService.countryData;
-    }*/
+  constructor(private connectionService: ConnectionService, private activatedRoute: ActivatedRoute ){
+    this.activatedRoute.params.subscribe((params: Params) => this.myParam = params['country']);
+    this.connectionService.getData().subscribe(data => {
+      data.forEach(d => {
+        if(d.country === this.myParam){
+          this.countryData = d
+          console.log("Data has been filtered: " + d.country);
+        }
+      })
+    })
   }
   ngOnInit(): void {
-    
-  }
-
-  getUsers(){
-    this.connectionService.getData().subscribe(data => {
-      console.log(data);
-      this.countryData = data;
-    })
   }
 }
