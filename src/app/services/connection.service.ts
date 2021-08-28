@@ -8,7 +8,7 @@ import { Country } from '../models/country';
 })
 export class ConnectionService implements OnInit {
 
-  baseUrl: string = "https://localhost:44383/api/country/";
+  baseUrl: string = "https://localhost:5001/api/country";
   countryData$: Observable<Country[]>;
   countryData: any;
 
@@ -21,6 +21,11 @@ export class ConnectionService implements OnInit {
 
   getData() {
     return this.http.get<Country[]>(this.baseUrl);
+  }
+
+  getCountryData(country: any): Observable<any> {
+    return this.http.get<any>(
+      `${this.baseUrl}/${country}`);
   }
 
 }

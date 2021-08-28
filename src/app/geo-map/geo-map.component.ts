@@ -21,7 +21,7 @@ am4core.useTheme(am4themes_animated);
 export class GeoMapComponent implements OnInit {
   r : any;
   country: any;
-  constructor(private router: Router ) {}
+  constructor(private router: Router, private connectionService: ConnectionService ) {}
 
   ngOnInit(): void {
     // Create map instance
@@ -49,7 +49,7 @@ export class GeoMapComponent implements OnInit {
 
     // Series for United States map
     let usaSeries = chart.series.push(new am4maps.MapPolygonSeries());
-    usaSeries.geodata = am4geodata_usaLow;
+    //usaSeries.geodata = am4geodata_usaLow;
 
     let usPolygonTemplate = usaSeries.mapPolygons.template;
     usPolygonTemplate.tooltipText = "{name}";
@@ -65,9 +65,14 @@ export class GeoMapComponent implements OnInit {
     activeState.properties.fill = chart.colors.getIndex(4);
 
     // Create an event to toggle "active" state
-    polygonTemplate.events.on("hit", function (ev) {
+    polygonTemplate.events.on("hit", function (ev: any) {
       ev.target.isActive = !ev.target.isActive;
+      if(ev.target.dataItem.dataContext.name === 'United States'){
+        
+        this.router.navigate(['/country-data', 'US']);
+      } else {
       this.router.navigate(['/country-data', ev.target.dataItem.dataContext.name]);
+      }
     }, this)
     
   }

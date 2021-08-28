@@ -1,12 +1,8 @@
 export interface Country {
-    country: string,
-    population: number,
-    sq_km_area: number,
-    life_expectancy: number,
-    elevation_in_meters: number,
-    continent: string,
-    abbreviation: string,
-    location: string,
-    iso: number,
-    capital_city: string
+    country: string,    
+    capital_city: string,
+    confirmed: number,
+    deaths: number,
+    life_expectancy: string,
+    population: number
 }

@@ -17,27 +17,18 @@ export class CountryDataComponent implements OnInit {
   title = 'covid-tracker';
   headers = [  "Country",
   "Capital City",
+  "Confirmed",
+  "Deaths",
+  "Life expectancy",
   "Population",
-  "SqKmArea",
-  "Life Expectancy",
-  "Elevation in Meters",
-  "Continent",
-  "Abbreviation",
-  "Location",
-  "Iso"
   ]
 
   constructor(private connectionService: ConnectionService, private activatedRoute: ActivatedRoute ){
     this.activatedRoute.params.subscribe((params: Params) => this.myParam = params['country']);
-    this.connectionService.getData().subscribe(data => {
-      data.forEach(d => {
-        if(d.country === this.myParam){
-          this.countryData = d
-          console.log("Data has been filtered: " + d.country);
-        }
-      })
-    })
   }
   ngOnInit(): void {
+    this.connectionService.getCountryData(this.myParam).subscribe(data => {
+      this.countryData = data.All;
+    })
   }
 }
