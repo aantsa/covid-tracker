@@ -4,3 +4,4 @@
 
 - This is a web application, where users can keep track on Corona-virus data per country.
 - Still working on it so please refer to the existing files of both repositories both front- and backend.
+- [Backend repo](https://github.com/aantsa/covid-tracker-backend)
